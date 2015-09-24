@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Resume</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="UserName">Username</string>
+    <string name="Password">Password</string>
+</resources>
