@@ -1,12 +1,17 @@
 package com.example.admin.resume;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -45,23 +50,49 @@ public class LogInScreen extends ActionBarActivity {
     {
         ParseUser user = new ParseUser();
 
-        System.out.println(UserNameText.getText().toString());
-        System.out.println(PasswordText.getText().toString());
+        //System.out.println(UserNameText.getText().toString());
+        //System.out.println(PasswordText.getText().toString());
         user.setUsername(UserNameText.getText().toString());
         user.setPassword(PasswordText.getText().toString());
 
+        final Context context = this;
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e == null) {
-                    // Hooray! Let them use the app now.
+                    Toast.makeText(LogInScreen.this, "Account Creation Successful", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, ResumeHome.class);
+                    intent.putExtra("UserName", UserNameText.getText().toString());
+                    startActivity(intent);
+                    
                 } else {
-                    // Sign up didn't succeed. Look at the ParseException
-                    // to figure out what went wrong
+                    Toast.makeText(LogInScreen.this, "Invalid Username/Password", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
+    public void onSignInClick(View v)
+    {
+        final Context context = this;
+        ParseUser.logInInBackground(UserNameText.getText().toString(), PasswordText.getText().toString(), new LogInCallback() {
+            @Override
+            public void done(ParseUser parseUser, ParseException e) {
+                if(parseUser != null)
+                {
+                    Toast.makeText(LogInScreen.this, "Logging In...", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, ResumeHome.class);
+                    intent.putExtra("UserName", UserNameText.getText().toString());
+                    startActivity(intent);
+
+
+                }
+                else
+                {
+                    Toast.makeText(LogInScreen.this, "Wrong username/password", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
