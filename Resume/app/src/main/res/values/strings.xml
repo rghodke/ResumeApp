@@ -6,4 +6,6 @@
     <string name="UserName">Username</string>
     <string name="Password">Password</string>
     <string name="title_activity_resume_home">ResumeHome</string>
+    <string name="title_activity_create_resume">CreateResume</string>
+    <string name="title_activity_previous_resumes">PreviousResumes</string>
 </resources>

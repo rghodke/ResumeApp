@@ -1,9 +1,11 @@
 package com.example.admin.resume;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class ResumeHome extends AppCompatActivity {
@@ -19,6 +21,18 @@ public class ResumeHome extends AppCompatActivity {
 
         WelcomeText = (TextView)findViewById(R.id.WelcomeText);
         WelcomeText.setText("Hi" + " " + usernamedata);
+    }
+
+    public void CreateResumeButton(View v)
+    {
+        Intent intent = new Intent(this, CreateResume.class);
+        startActivity(intent);
+    }
+
+    public void ViewPreviousResume(View v)
+    {
+        Intent intent = new Intent(this, PreviousResumes.class);
+        startActivity(intent);
     }
 
     @Override

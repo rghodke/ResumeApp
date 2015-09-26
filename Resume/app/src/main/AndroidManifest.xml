@@ -12,7 +12,8 @@
         android:theme="@style/Theme.AppCompat.NoActionBar" >
         <activity
             android:name=".LogInScreen"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +22,17 @@
         </activity>
         <activity
             android:name=".ResumeHome"
-            android:label="@string/title_activity_resume_home" >
+            android:label="@string/title_activity_resume_home"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".CreateResume"
+            android:label="@string/title_activity_create_resume"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".PreviousResumes"
+            android:label="@string/title_activity_previous_resumes" >
         </activity>
     </application>
 

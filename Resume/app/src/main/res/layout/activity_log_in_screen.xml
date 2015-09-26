@@ -49,7 +49,8 @@
             android:onClick="onSignInClick"
             android:layout_alignTop="@+id/SignUpClick"
             android:layout_alignRight="@+id/imageView"
-            android:layout_alignEnd="@+id/imageView" />
+            android:layout_alignEnd="@+id/imageView"
+            android:textColor="#ffd700" />
 
         <Button
             android:layout_width="wrap_content"
@@ -60,7 +61,8 @@
             android:layout_marginBottom="54dp"
             android:layout_alignParentBottom="true"
             android:layout_alignLeft="@+id/PassWordText"
-            android:layout_alignStart="@+id/PassWordText" />
+            android:layout_alignStart="@+id/PassWordText"
+            android:textColor="#ffd700" />
 
         <ImageView
             android:layout_width="wrap_content"

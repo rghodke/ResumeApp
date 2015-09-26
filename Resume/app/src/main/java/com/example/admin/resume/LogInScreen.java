@@ -33,12 +33,6 @@ public class LogInScreen extends ActionBarActivity {
         Parse.initialize(this, "aQLIABgC5AsHxFs3hDig6ASuGBHZF6ceY4aN3omu", "D9jzIth6Ls6X2sKO7POpDjK9ppO58tTXjHWjkZNT");
 
 
-        ParseObject testObject = new ParseObject("TestObject");
-
-
-        testObject.put("foo", "bar");
-        testObject.saveInBackground();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in_screen);
         UserNameText = (EditText)findViewById(R.id.UserNameText);

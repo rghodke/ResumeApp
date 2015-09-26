@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.example.admin.resume.ResumeHome">
+    tools:context="com.example.admin.resume.ResumeHome"
+    >
 
     <LinearLayout
         android:orientation="horizontal"
@@ -52,11 +53,88 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:text="New Text"
         android:id="@+id/WelcomeText"
         android:layout_below="@+id/linearLayout"
+        android:layout_marginTop="43dp"
+        android:textColor="#ffd700"
+        android:textSize="25dp"
+        android:layout_alignRight="@+id/PreviousResumeButton"
+        android:layout_alignEnd="@+id/PreviousResumeButton"
+        android:layout_alignLeft="@+id/PreviousResumeButton"
+        android:layout_alignStart="@+id/PreviousResumeButton"
+        android:gravity="center|center_vertical" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Create Resume"
+        android:id="@+id/CreateResumeButton"
+        android:layout_below="@+id/WelcomeText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp" />
+        android:layout_marginTop="70dp"
+        android:textColor="#ffd700"
+        android:onClick="CreateResumeButton" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="View Previously Created Resumes"
+        android:id="@+id/PreviousResumeButton"
+        android:textColor="#ffd700"
+        android:layout_below="@+id/WelcomeText"
+        android:layout_centerHorizontal="true"
+        android:onClick="ViewPreviousResume" />
+
+    <TextView
+        android:layout_width="115dp"
+        android:layout_height="80dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Number of Views"
+        android:id="@+id/constantTextLeft"
+        android:textSize="20dp"
+        android:textColor="#ffd700"
+        android:layout_above="@+id/Profile"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="115dp"
+        android:layout_height="80dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Number of Connections"
+        android:id="@+id/StaticTextRight"
+        android:textSize="20dp"
+        android:textColor="#ffd700"
+        android:layout_alignTop="@+id/constantTextLeft"
+        android:layout_alignRight="@+id/linearLayout"
+        android:layout_alignEnd="@+id/linearLayout"
+
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="#"
+        android:id="@+id/Profile"
+        android:textSize="75dp"
+        android:textColor="#ffd700"
+
+        android:layout_alignParentBottom="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="#"
+        android:id="@+id/Connection"
+        android:textSize="75dp"
+        android:textColor="#ffd700"
+        android:layout_below="@+id/StaticTextRight"
+        android:layout_alignLeft="@+id/StaticTextRight"
+        android:layout_alignStart="@+id/StaticTextRight"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
