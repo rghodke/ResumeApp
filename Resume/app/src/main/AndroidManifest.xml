@@ -34,6 +34,10 @@
             android:name=".PreviousResumes"
             android:label="@string/title_activity_previous_resumes" >
         </activity>
+        <activity
+            android:name=".ResumeOpen"
+            android:label="@string/title_activity_resume_open" >
+        </activity>
     </application>
 
 </manifest>
