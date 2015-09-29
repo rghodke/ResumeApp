@@ -27,6 +27,7 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:layout_weight=".33"
+            android:onClick = "addfriendtemp"
 
             />
 
@@ -119,22 +120,26 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="#"
         android:id="@+id/Profile"
-        android:textSize="75dp"
+        android:textSize="50dp"
         android:textColor="#ffd700"
 
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:layout_alignRight="@+id/constantTextLeft"
+        android:layout_alignEnd="@+id/constantTextLeft" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="#"
-        android:id="@+id/Connection"
-        android:textSize="75dp"
+        android:id="@+id/ConnectionTV"
+        android:textSize="50dp"
         android:textColor="#ffd700"
         android:layout_below="@+id/StaticTextRight"
         android:layout_alignLeft="@+id/StaticTextRight"
         android:layout_alignStart="@+id/StaticTextRight"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:gravity="center" />
 
 </RelativeLayout>

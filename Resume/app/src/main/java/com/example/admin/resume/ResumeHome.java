@@ -8,9 +8,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.List;
+
 public class ResumeHome extends AppCompatActivity {
 
     TextView WelcomeText;
+    TextView ConnectionNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +28,24 @@ public class ResumeHome extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String usernamedata = bundle.getString("UserName");
 
+
+        ConnectionNum = (TextView)findViewById(R.id.ConnectionTV);
+        ParseQuery query = new ParseQuery("Friends");
+
         WelcomeText = (TextView)findViewById(R.id.WelcomeText);
         WelcomeText.setText("Hi" + " " + usernamedata);
+        query.findInBackground(new FindCallback<ParseObject>() {
+                                   public void done(List<ParseObject> FriendList, ParseException e) {
+                                       ConnectionNum.setText(Integer.toString(FriendList.get(0).getList("FriendsList").size()) );
+                                   }
+                               }
+        );
+    }
+
+    public void addfriendtemp(View v)
+    {
+        Intent intent = new Intent(ResumeHome.this, FindFriendActivity.class);
+        startActivity(intent);
     }
 
     public void CreateResumeButton(View v)

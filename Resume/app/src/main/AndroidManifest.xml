@@ -55,7 +55,7 @@
             android:label="@string/title_activity_connection_manager" >
         </activity>
         <activity
-            android:name=".NearMeActivity"
+            android:name=".FindFriendActivity"
             android:label="@string/title_activity_near_me" >
         </activity>
 

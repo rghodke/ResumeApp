@@ -13,10 +13,13 @@ import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.Parse;
+import com.parse.ParseACL;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+
+import java.util.ArrayList;
 
 
 public class LogInScreen extends ActionBarActivity {
@@ -38,31 +41,58 @@ public class LogInScreen extends ActionBarActivity {
         UserNameText = (EditText)findViewById(R.id.UserNameText);
         PasswordText = (EditText)findViewById(R.id.PassWordText);
 
+        ParseUser remove = ParseUser.getCurrentUser();
+        if(remove != null)
+        {
+         ParseUser.logOut();
+        }
+
     }
 
     public void onSignUpClick(View v)
     {
-        ParseUser user = new ParseUser();
 
-        //System.out.println(UserNameText.getText().toString());
-        //System.out.println(PasswordText.getText().toString());
+        ParseUser remove = ParseUser.getCurrentUser();
+        if(remove != null)
+        {
+            ParseUser.logOut();
+        }
+
+        final ParseUser user = new ParseUser();
+
+
         user.setUsername(UserNameText.getText().toString());
         user.setPassword(PasswordText.getText().toString());
+
+
 
         final Context context = this;
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e == null) {
                     Toast.makeText(LogInScreen.this, "Account Creation Successful", Toast.LENGTH_SHORT).show();
+
+
+                    ParseObject friendlist = new ParseObject("Friends");
+                    ArrayList temp = new ArrayList();
+                    temp.add(UserNameText.getText().toString());
+                    friendlist.put("FriendsList", temp);
+                    friendlist.setACL(new ParseACL(user));
+                    friendlist.saveInBackground();
+
                     Intent intent = new Intent(context, ResumeHome.class);
                     intent.putExtra("UserName", UserNameText.getText().toString());
                     startActivity(intent);
-                    
+
                 } else {
+                    System.out.println(e);
                     Toast.makeText(LogInScreen.this, "Invalid Username/Password", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+
+
     }
 
     public void onSignInClick(View v)
