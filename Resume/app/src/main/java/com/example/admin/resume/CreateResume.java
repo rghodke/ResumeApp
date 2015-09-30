@@ -8,9 +8,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import com.parse.FindCallback;
 import com.parse.ParseACL;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import java.util.List;
 
 public class CreateResume extends AppCompatActivity {
 
@@ -28,7 +33,7 @@ public class CreateResume extends AppCompatActivity {
 
         ParseUser currentUser = ParseUser.getCurrentUser();
 
-        ParseObject ResumeInfo = new ParseObject("Resume");
+        final ParseObject ResumeInfo = new ParseObject("Resume");
 
         intel = (EditText)findViewById(R.id.NameText);
         ResumeInfo.put("Name", intel.getText().toString());
@@ -54,15 +59,63 @@ public class CreateResume extends AppCompatActivity {
         intel = (EditText)findViewById(R.id.Comments);
         ResumeInfo.put("Extra", intel.getText().toString());
 
-        ResumeInfo.setACL(new ParseACL(currentUser));
+        ParseACL tempACL = new ParseACL(currentUser);
+
+        ResumeInfo.setACL(tempACL);
 
         ResumeInfo.saveInBackground();
+
+        ParseQuery findfriends = new ParseQuery("Friends");
+
+        findfriends.findInBackground(new FindCallback<ParseObject>() {
+                                         public void done(List<ParseObject> FriendList, ParseException e) {
+                                             if (e == null) {
+                                                 ParseObject FriendListObject = FriendList.get(0);
+                                                 List<String> tempo = FriendListObject.getList("FriendsList");
+                                                 for (String u : tempo) {
+
+                                                     ParseQuery pquery = ParseUser.getQuery();
+                                                     pquery.whereEqualTo("username", u);
+                                                     pquery.findInBackground(new FindCallback<ParseUser>() {
+                                                                                 public void done(List<ParseUser> userslist, ParseException e) {
+                                                                                     if (e == null) {
+                                                                                         System.out.println(userslist.get(0));
+                                                                                         ParseACL tACL = ResumeInfo.getACL();
+                                                                                         tACL.setReadAccess(userslist.get(0), true);
+                                                                                         ResumeInfo.setACL(tACL);
+                                                                                         ResumeInfo.saveInBackground();
+
+
+
+                                                                                     } else {
+
+                                                                                     }
+                                                                                 }
+                                                                             }
+                                                     );
+
+                                                 }
+                                             } else {
+
+                                             }
+                                         }
+                                     }
+        );
+
+
+
+
+
+
 
         Intent intent = new Intent(this, ResumeHome.class);
         intent.putExtra("UserName", currentUser.getUsername());
         startActivity(intent);
 
     }
+
+
+
 
 
     @Override
