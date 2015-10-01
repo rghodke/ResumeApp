@@ -14,4 +14,5 @@
     <string name="title_activity_near_me">NearMeActivity</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_friends_resume">FriendsResume</string>
+    <string name="title_activity_hamberger_menu_test">HambergerMenuTest</string>
 </resources>

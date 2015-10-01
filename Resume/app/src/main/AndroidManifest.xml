@@ -70,6 +70,10 @@
             android:name=".FriendsResume"
             android:label="@string/title_activity_friends_resume" >
         </activity>
+        <activity
+            android:name=".HambergerMenuTest"
+            android:label="@string/title_activity_hamberger_menu_test" >
+        </activity>
     </application>
 
 </manifest>

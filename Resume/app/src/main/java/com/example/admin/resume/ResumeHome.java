@@ -42,9 +42,9 @@ public class ResumeHome extends AppCompatActivity {
         );
     }
 
-    public void addfriendtemp(View v)
+    public void gotoConfig(View v)
     {
-        Intent intent = new Intent(ResumeHome.this, FindFriendActivity.class);
+        Intent intent = new Intent(ResumeHome.this, ConfigScreen.class);
         startActivity(intent);
     }
 

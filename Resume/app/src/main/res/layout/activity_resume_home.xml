@@ -27,7 +27,7 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:layout_weight=".33"
-            android:onClick = "addfriendtemp"
+            android:onClick = "gotoConfig"
 
             />
 
